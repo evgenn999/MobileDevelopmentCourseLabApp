@@ -43,13 +43,14 @@ class ArticleFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        score = savedInstanceState?.getInt("SCORE") ?: 0
+        /*score = savedInstanceState?.getInt("SCORE") ?: 0*/
         Log.d("Log","${this::class.simpleName} - onCreate")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        score = savedInstanceState?.getInt("SCORE") ?: 0
         context?.let {
             Glide
                 .with(it)
@@ -99,7 +100,10 @@ class ArticleFragment : Fragment() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
         outState.putInt("SCORE", score)
+        super.onSaveInstanceState(outState)
+    }
+    companion object {
+        private const val SCORE = "SCORE"
     }
 }
