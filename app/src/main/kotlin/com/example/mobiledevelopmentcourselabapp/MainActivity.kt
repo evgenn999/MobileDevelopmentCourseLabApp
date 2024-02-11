@@ -1,6 +1,7 @@
 package com.example.mobiledevelopmentcourselabapp
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -33,5 +34,33 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView?.setupWithNavController(navController)
+
+        Log.d("Log","${this::class.simpleName} - onCreate")
     }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("Log","${this::class.simpleName} - onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("Log","${this::class.simpleName} - onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("Log","${this::class.simpleName} - onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("Log","${this::class.simpleName} - onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("Log","${this::class.simpleName} - onDestroy")
+    }
+
 }
