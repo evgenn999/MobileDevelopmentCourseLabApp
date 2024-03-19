@@ -7,24 +7,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.mobiledevelopmentcourselabapp.databinding.FragmentSecondBinding
+import com.example.mobiledevelopmentcourselabapp.databinding.FragmentListBinding
+import com.example.mobiledevelopmentcourselabapp.presentation.view.second.adapter.PlayerAdapter
+import com.example.mobiledevelopmentcourselabapp.presentation.view.second.generator.Generator
 
-class SecondFragment : Fragment() {
+class ListFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentListBinding? = null
 
     private val binding get() = _binding!!
+
+    private val adapter by lazy {PlayerAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentListBinding.inflate(inflater, container, false)
         val root: View = binding.root
         Log.d("Log","${this::class.simpleName} - onCreateView")
         // Обращайся к элементам View здесь
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.playersList.adapter = adapter
+        adapter.updateItems(Generator.generate())
+
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)
