@@ -1,21 +1,28 @@
 package com.example.mobiledevelopmentcourselabapp.presentation.view.second.model
 
-class PlayerUiModel (
+import java.io.Serializable
+
+interface ItemUiModel : Serializable
+data class StudentUiModel(
     val name: String,
     val photoUrl: String,
     val number: Int,
     val team: String,
     val position: Position,
     val age: Int,
+    val fiveGrade: Int,
+    val fourGrade: Int,
+    val threeGrade: Int,
+    val twoGrade: Int,
+    val oneGrade: Int,
     var isExpanded: Boolean = false
-) {
-    val formattedTeam = "Команда: $team"
-    val formattedPosition = "Позиция: ${position.rusName}"
-}
+) : ItemUiModel
 
 enum class Position(val rusName: String = "") {
-    GOALKEEPER( "Вратарь" ),
-    DEFENDER(  "Защитник" ),
-    MIDFIELD(  "Полузащитник"),
-    FORWARD(  "Нападающий")
+    BACHELOR("Бакалавр"),
+    SPECIALIST("Специалист"),
+    MASTER("Магистрант"),
+    POSTGRADUATE("Аспирант")
 }
+
+object AdUiModel : ItemUiModel

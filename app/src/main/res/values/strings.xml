@@ -5,12 +5,54 @@
     <string name="title_third">Третий</string>
     <string name="article_title">Как написать дипломную работу</string>
 
-    <string name="age_pattern">Возраст: %d %s</string>
+    <string name="stats">Статистика студента</string>
+    <string name="count_pattern">%d %s</string>
+    <string name="title_card">Карточка студента</string>
+    <string name="age_title">Возраст</string>
+    <string name="position">Статус</string>
+    <string name="team">Институт</string>
+    <string name="infoTitle">Информация</string>
+    <string name="share">Поделиться</string>
 
     <plurals name="age">
         <item quantity="one">год</item>
         <item quantity="few">года</item>
         <item quantity="many">лет</item>
         <item quantity="other">лет</item>
+    </plurals>
+
+    <plurals name="games">
+        <item quantity="one">оценка отл.</item>
+        <item quantity="few">оценки отл.</item>
+        <item quantity="many">оценок отл.</item>
+        <item quantity="other">оценок отл.</item>
+    </plurals>
+
+    <plurals name="goals">
+        <item quantity="one">оценка хор.</item>
+        <item quantity="few">оценки хор.</item>
+        <item quantity="many">оценок хор.</item>
+        <item quantity="other">оценок хор.</item>
+    </plurals>
+
+    <plurals name="assists">
+        <item quantity="one">оценка уд.</item>
+        <item quantity="few">оценки уд.</item>
+        <item quantity="many">оценок уд.</item>
+        <item quantity="other">оценок уд.</item>
+    </plurals>
+
+    <plurals name="yellows">
+        <item quantity="one">оценка неуд.</item>
+        <item quantity="few">оценки неуд.</item>
+        <item quantity="many">оценок неуд.</item>
+        <item quantity="other">оценок неуд.</item>
+    </plurals>
+
+    <plurals name="reds">
+        <item quantity="one">оценка кол</item>
+        <item quantity="few">оценки кол</item>
+        <item quantity="many">оценок кол</item>
+        <item quantity="other">оценок кол</item>
     </plurals>
 </resources>

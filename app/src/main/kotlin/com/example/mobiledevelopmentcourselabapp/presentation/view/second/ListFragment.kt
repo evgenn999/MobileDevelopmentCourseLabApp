@@ -1,15 +1,17 @@
 package com.example.mobiledevelopmentcourselabapp.presentation.view.second
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import com.example.mobiledevelopmentcourselabapp.R
 import com.example.mobiledevelopmentcourselabapp.databinding.FragmentListBinding
-import com.example.mobiledevelopmentcourselabapp.presentation.view.second.adapter.PlayerAdapter
+import com.example.mobiledevelopmentcourselabapp.presentation.view.second.adapter.StudentsAdapter
 import com.example.mobiledevelopmentcourselabapp.presentation.view.second.generator.Generator
+import com.example.mobiledevelopmentcourselabapp.presentation.view.second.model.StudentUiModel
 
 class ListFragment : Fragment() {
 
@@ -17,7 +19,7 @@ class ListFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val adapter by lazy {PlayerAdapter() }
+    private val adapter by lazy { StudentsAdapter(::onPlayerClicked) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,59 +28,25 @@ class ListFragment : Fragment() {
     ): View {
         _binding = FragmentListBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        Log.d("Log","${this::class.simpleName} - onCreateView")
+
         // Обращайся к элементам View здесь
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.playersList.adapter = adapter
+        binding.StudentsList.adapter = adapter
         adapter.updateItems(Generator.generate())
-
-    }
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        Log.d("Log","${this::class.simpleName} - onAttach")
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.d("Log","${this::class.simpleName} - onCreate")
-    }
-    override fun onStart() {
-        super.onStart()
-        Log.d("Log","${this::class.simpleName} - onStart")
-    }
+    private fun onPlayerClicked(Student: StudentUiModel) {
+        val bundle = bundleOf(CardFragment.CARD_STUDENT_KEY to Student)
+        view?.findNavController()?.navigate(R.id.action_navigation_list_to_cardFragment, bundle)
 
-    override fun onResume() {
-        super.onResume()
-        Log.d("Log","${this::class.simpleName} - onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("Log","${this::class.simpleName} - onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("Log","${this::class.simpleName} - onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("Log","${this::class.simpleName} - onDestroy")
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        Log.d("Log","${this::class.simpleName} - onDestroyView")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Log.d("Log","${this::class.simpleName} - onDetach")
     }
 }
