@@ -23,7 +23,7 @@ class CardFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val Student by lazy { arguments?.getSerializable(CARD_STUDENT_KEY) as? StudentUiModel }
+    private val student by lazy { arguments?.getSerializable(CARD_STUDENT_KEY) as? StudentUiModel }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,7 +55,7 @@ class CardFragment : Fragment() {
     private fun shareStudentText() {
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, Student.toString())
+            putExtra(Intent.EXTRA_TEXT, student.toString())
             type = "text/plain"
         }
 
@@ -66,25 +66,24 @@ class CardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        Student?.let { Student ->
-            binding.name.text = Student.name
-            binding.number.text = Student.number.toString()
-
-            setStat(binding.ageValue, Student.age, R.plurals.age)
-            binding.positionValue.text = Student.position.rusName
-            binding.teamValue.text = Student.team
+        student?.let { student ->
+            binding.name.text = student.name
+            binding.number.text = student.number.toString()
+            binding.ageValue.text = student.age.toString()
+            binding.positionValue.text = student.position.rusName
+            binding.teamValue.text = student.team
 
             Glide
                 .with(this)
-                .load(Student.photoUrl)
+                .load(student.photoUrl)
                 .circleCrop()
                 .into(binding.icon)
 
-            setStat(binding.fiveGrade, Student.fiveGrade, R.plurals.games)
-            setStat(binding.fourGrade, Student.fourGrade, R.plurals.goals)
-            setStat(binding.threeGrade, Student.threeGrade, R.plurals.assists)
-            setStat(binding.twoGrade, Student.twoGrade, R.plurals.yellows)
-            setStat(binding.oneGrade, Student.oneGrade, R.plurals.reds)
+            binding.fiveGrade.text = student.formattedFiveGrade
+            binding.fourGrade.text = student.formattedFourGrade
+            binding.threeGrade.text = student.formattedThreeGrade
+            binding.twoGrade.text = student.formattedTwoGrade
+            binding.oneGrade.text = student.formattedOneGrade
 
         }
 

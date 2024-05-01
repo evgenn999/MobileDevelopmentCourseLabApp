@@ -28,8 +28,8 @@
 
     <ImageView
         android:id="@+id/study"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/icon_48"
+        android:layout_height="@dimen/icon_48"
         android:src="@drawable/study"
         app:layout_constraintBottom_toBottomOf="@id/icon"
         app:layout_constraintEnd_toEndOf="parent"

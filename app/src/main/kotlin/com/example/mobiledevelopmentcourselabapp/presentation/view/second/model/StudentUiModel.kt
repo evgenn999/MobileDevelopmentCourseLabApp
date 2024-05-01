@@ -16,7 +16,13 @@ data class StudentUiModel(
     val twoGrade: Int,
     val oneGrade: Int,
     var isExpanded: Boolean = false
-) : ItemUiModel
+) : ItemUiModel {
+    val formattedFiveGrade = "Кол-во 5: $fiveGrade"
+    val formattedFourGrade = "Кол-во 4: $fourGrade"
+    val formattedThreeGrade = "Кол-во 3: $threeGrade"
+    val formattedTwoGrade = "Кол-во 2: $twoGrade"
+    val formattedOneGrade = "Кол-во 1: $oneGrade"
+}
 
 enum class Position(val rusName: String = "") {
     BACHELOR("Бакалавр"),

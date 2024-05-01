@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.mobiledevelopmentcourselabapp.databinding.FragmentCardBinding
 import com.example.mobiledevelopmentcourselabapp.databinding.ItemStudentBinding
 import com.example.mobiledevelopmentcourselabapp.presentation.view.second.model.AdUiModel
 import com.example.mobiledevelopmentcourselabapp.presentation.view.second.model.ItemUiModel
@@ -27,7 +28,7 @@ class StudentsAdapter(
             StudentHolder(binding)
         } else {
             val binding =
-                ItemStudentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                FragmentCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             AdHolder(binding)
         }
     }
@@ -56,13 +57,13 @@ class StudentsAdapter(
     class StudentHolder(private val binding: ItemStudentBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(Student: StudentUiModel) {
-            binding.name.text = Student.name
-            binding.number.text = Student.number.toString()
+        fun bind(student: StudentUiModel) {
+            binding.name.text = student.name
+            binding.number.text = student.number.toString()
 
             Glide
                 .with(itemView)
-                .load(Student.photoUrl)
+                .load(student.photoUrl)
                 .circleCrop()
                 .into(binding.icon)
         }
@@ -72,7 +73,7 @@ class StudentsAdapter(
         }
     }
 
-    class AdHolder(binding: ItemStudentBinding) : RecyclerView.ViewHolder(binding.root)
+    class AdHolder(binding: FragmentCardBinding) : RecyclerView.ViewHolder(binding.root)
     companion object {
         const val STUDENT_ID = 0
         const val AD_ID = 1
